@@ -24,22 +24,50 @@ public class Vivienda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String titulo;
+
     private String descripcion;
+
+    @Column(nullable = false)
     private String ciudad;
+
+    @Column(nullable = false)
     private String provincia;
+
+    @Column(nullable = false)
     private Integer precio;
+
+    @Column(nullable = false, name = "metros_cuadrados")
     private Integer metrosCuadrados;
+
+    @Column(nullable = false)
     private Integer habitaciones;
+
+    @Column(nullable = false)
     private Integer banos;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoVivienda tipo;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadoVivienda estado;
+
+    @Column(nullable = false)
     private Boolean ascensor;
+
+    @Column(nullable = false)
     private Boolean terraza;
+
+    @Column(nullable = false)
     private Boolean garaje;
+
+    @Column(nullable = false)
     private Boolean disponible;
+
+    @Column(nullable = false, name = "fecha_publicacion")
     private LocalDate fechaPublicacion;
 
     @Override
@@ -57,18 +85,4 @@ public class Vivienda {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
-
-    public static interface Specs {
-
-        public static PredicateSpecification<Vivienda> saldoBetween (Double min, Double max) {
-            return (from, cb) ->{
-                    Double realMin = (min != null) ? min : Double.NEGATIVE_INFINITY;
-                    Double realMax = (max != null) ? max : Double.POSITIVE_INFINITY;
-
-                    return cb.between(from.get("precioMin"), realMin, realMax);
-            };
-        }
-
-    }
-
 }
