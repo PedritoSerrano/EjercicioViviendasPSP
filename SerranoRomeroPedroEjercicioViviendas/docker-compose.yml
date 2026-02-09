@@ -30,10 +30,6 @@ services:
       - ./servers.json:/pgadmin4/servers.json
 
 
-
-
-
-
 volumes:
   pgdata:
   pgadmin-data:

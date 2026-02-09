@@ -51,6 +51,8 @@ public class ViviendaService {
                 .ascensor(request.ascensor())
                 .terraza(request.terraza())
                 .garaje(request.garaje())
+                .disponible(request.disponible())
+                .fechaPublicacion(java.time.LocalDate.now())
                 .build();
 
         return  viviendaRepository.save(v);
